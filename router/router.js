@@ -11,10 +11,12 @@ const router = (request, response) => {
         var result = Pag2 (request);
         response.end(result);
         //response.end( 'Bye World' );
-    } else if (request.url === '/pag1') {
+    } else if (request.url.startsWith('/pag1')) {
         var result = Pag1 (request);
         response.end(result);
         //response.end ( 'Hello World' );
+    }else{
+        console.log("ignorando peticion: " + request.url );
     }
 };
 
