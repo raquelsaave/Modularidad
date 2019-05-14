@@ -10,6 +10,8 @@ const pag1 = (request) => {
     //return request.url;
     var result = modelP1();
     alta(request, result); //ahora mandamos a llamar el modelP1 que regresa el archivo JSON 
+   
+   
     return JSON.stringify(result); // JSON.stringify convierte el archivo JSON a string para que se pueda mostrar
     //JSON.stringify(result)
 };
@@ -18,12 +20,22 @@ function alta (request, result) {
     let miURL = url.parse(request.url, true);   
     //var mod= modelP1();
     if(miURL.query.func === "alta") {
-        let nuevoRegistro = {
+        if (miURL.query.n !== "" &&  miURL.query.ap !== "" && miURL.query.am !== ""){
+            let nuevoRegistro = {
             nombre : miURL.query.n,
             apellido_paterno : miURL.query.ap,
             apellido_materno: miURL.query.am
         }
         result.push(nuevoRegistro);
+        
+        }
+        else{
+            let nuevoRegistro = {
+                nombre : "REGISTRO INVALIDO"
+            }
+             result.push(nuevoRegistro);
+
+        }
     }
     //var mod= modelP1();
     //let objeto = { nombre: "Ana", apellido_paterno : "Macias" , apellido_materno : "Alonso"};
