@@ -29,5 +29,4 @@ function alta (request, result) {
     //let objeto = { nombre: "Ana", apellido_paterno : "Macias" , apellido_materno : "Alonso"};
     //mod.push(objeto);
 }
-
 module.exports = pag1; 

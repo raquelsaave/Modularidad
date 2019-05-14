@@ -3,6 +3,7 @@
 //Los controladores van con mayuscula
 const Pag1 = require("../controllers/Pag1");
 const Pag2 = require("../controllers/Pag2");
+const Search = require("../controllers/Search");
 
 const router = (request, response) => {
     //console.log('Servidor corriendo');
@@ -15,7 +16,10 @@ const router = (request, response) => {
         var result = Pag1 (request);
         response.end(result);
         //response.end ( 'Hello World' );
-    }else{
+    }else if (request.url.startsWith('/search')) {
+        var result = Search (request);      
+        response.end(result);
+    }else {
         console.log("ignorando peticion: " + request.url );
     }
 };
